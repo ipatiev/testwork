@@ -30,7 +30,7 @@ class TrackTableFilters extends Component {
         return (
             <form>
                 <div className="form-group">
-                    <label>Артист:</label>
+                    <label>Исполнитель:</label>
                     <select onChange={this.onChangeArtist} className="form-control">
                         <option value="">Все</option>
                         {this.props.artists.map(createOption)}
