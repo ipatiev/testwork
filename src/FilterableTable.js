@@ -6,6 +6,8 @@ import Pagination from "./Pagination";
 
 class FilterableTable extends Component {
 
+    itemCountPerPage = 5;
+
     constructor(props) {
         super(props);
         this.onArtistChange = this.onArtistChange.bind(this);
@@ -64,7 +66,7 @@ class FilterableTable extends Component {
                     yearList={yearList}
                     onYearChange={this.onYearChange}/>
                 <TrackListTable tracks={tracks} />
-                <Pagination />
+                <Pagination itemCountPerPage={this.itemCountPerPage} totalCount={tracks.length} />
             </div>
         );
     }

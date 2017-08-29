@@ -58,15 +58,15 @@ class TrackListTable extends Component {
         return (
 
             <table>
-                <thead>
-                <tr>
-                    <th><a href="javascript:void(0);" onClick={ this.orderByArtist }>Исполнитель</a></th>
-                    <th><a href="javascript:void(0);" onClick={ this.orderByName }>Песня</a></th>
-                    <th><a href="javascript:void(0);" onClick={ this.orderByGenre }>Жанр</a></th>
-                    <th><a href="javascript:void(0);" onClick={ this.orderByYear }>Год</a></th>
-                </tr>
-                </thead>
-                <tbody>{rows}</tbody>
+                {/*<thead>*/}
+                {/*<tr>*/}
+                    {/*<th><a href="javascript:void(0);" onClick={ this.orderByArtist }>Исполнитель</a></th>*/}
+                    {/*<th><a href="javascript:void(0);" onClick={ this.orderByName }>Песня</a></th>*/}
+                    {/*<th><a href="javascript:void(0);" onClick={ this.orderByGenre }>Жанр</a></th>*/}
+                    {/*<th><a href="javascript:void(0);" onClick={ this.orderByYear }>Год</a></th>*/}
+                {/*</tr>*/}
+                {/*</thead>*/}
+                {/*<tbody>{rows}</tbody>*/}
             </table>
         );
     }
