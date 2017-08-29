@@ -36,22 +36,7 @@ class TrackTable extends Component {
 
     render() {
 
-        let tracks = this.props.tracks;
-
-        if (this.state.orderBy) {
-            if (this.state.orderBy === 'year') {
-                tracks = tracks.sort((a, b) => (a.year - b.year))
-            } else {
-                let key = this.state.orderBy;
-                tracks = tracks.sort((a, b) => {
-                    if (a[key] < b[key]) return -1;
-                    if (a[key] > b[key]) return 1;
-                    return 0;
-                })
-            }
-        }
-
-        let rows = tracks.map((track) => {
+        let rows = this.props.tracks.map((track) => {
             return (<TrackListRow key={track.id} track={track}/>);
         });
 

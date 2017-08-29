@@ -57,21 +57,34 @@ class TracksPage extends Component {
 
         let tracks = this.props.tracks;
 
-        // if (this.state) {
-        //     if (this.state.artist) {
-        //         tracks = this.props.tracks.filter((item) => item.artist === this.state.artist);
-        //     }
-        //     if (this.state.genre) {
-        //         tracks = this.props.tracks.filter((item) => item.genre === this.state.genre);
-        //     }
-        //     if (this.state.year) {
-        //         tracks = this.props.tracks.filter((item) => item.year === this.state.year);
-        //     }
-        // }
+        if (this.state) {
+            if (this.state.artist) {
+                tracks = this.props.tracks.filter((item) => item.artist === this.state.artist);
+            }
+            if (this.state.genre) {
+                tracks = this.props.tracks.filter((item) => item.genre === this.state.genre);
+            }
+            if (this.state.year) {
+                tracks = this.props.tracks.filter((item) => item.year === this.state.year);
+            }
+        }
+
+        if (this.state.orderBy) {
+            if (this.state.orderBy === 'year') {
+                tracks = tracks.sort((a, b) => (a.year - b.year))
+            } else {
+                let key = this.state.orderBy;
+                tracks = tracks.sort((a, b) => {
+                    if (a[key] < b[key]) return -1;
+                    if (a[key] > b[key]) return 1;
+                    return 0;
+                })
+            }
+        }
 
         let paginatedTracks = tracks.slice(
-            this.itemCountPerPage * this.state.page,
-            this.itemCountPerPage * this.state.page + this.itemCountPerPage
+            this.itemCountPerPage * this.state.page - this.itemCountPerPage,
+            this.itemCountPerPage * this.state.page
         );
 
         return (
