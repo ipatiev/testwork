@@ -1,13 +1,14 @@
 import React, {Component} from 'react';
-import TrackListRow from "./TrackListRow";
 
-class TrackListTable extends Component {
+class TrackTableNoResults extends Component {
 
     render() {
         return (
-            <div>No results</div>
+            <tr>
+                <td colSpan="4">Нет результатов</td>
+            </tr>
         );
     }
 }
 
-export default TrackListTable;
+export default TrackTableNoResults;

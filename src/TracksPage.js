@@ -28,21 +28,24 @@ class TracksPage extends Component {
     onSelectArtist(artist)
     {
         this.setState({
-            artist: artist
+            artist: artist,
+            page: 1
         });
     }
 
     onSelectGenre(genre)
     {
         this.setState({
-            genre: genre
+            genre: genre,
+            page: 1
         });
     }
 
     onSelectYear(year)
     {
         this.setState({
-            year: year
+            year: year,
+            page: 1
         });
     }
 
@@ -59,13 +62,13 @@ class TracksPage extends Component {
 
         if (this.state) {
             if (this.state.artist) {
-                tracks = this.props.tracks.filter((item) => item.artist === this.state.artist);
+                tracks = tracks.filter((item) => item.artist === this.state.artist);
             }
             if (this.state.genre) {
-                tracks = this.props.tracks.filter((item) => item.genre === this.state.genre);
+                tracks = tracks.filter((item) => item.genre === this.state.genre);
             }
             if (this.state.year) {
-                tracks = this.props.tracks.filter((item) => item.year === this.state.year);
+                tracks = tracks.filter((item) => item.year === this.state.year);
             }
         }
 

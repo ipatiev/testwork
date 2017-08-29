@@ -34,14 +34,20 @@ class Pagination extends Component {
                 isActive={currentPage === page}
                 onPageChange={this.handlePageChange}/>));
 
+        if (pages.length <= 1) {
+            return null;
+        }
         return (
-            <nav>
-                <ul className="pagination">
-                    <PagePrevLink page={currentPage} onPageChange={this.handlePageChange}/>
-                    {pageLinks}
-                    <PageNextLink page={currentPage} maxPage={maxPage} onPageChange={this.handlePageChange}/>
-                </ul>
-            </nav>
+            <div className="row">
+                <div className="col-md-10">
+                    <ul className="pagination">
+                        <PagePrevLink page={currentPage} onPageChange={this.handlePageChange}/>
+                        {pageLinks}
+                        <PageNextLink page={currentPage} maxPage={maxPage} onPageChange={this.handlePageChange}/>
+                    </ul>
+                </div>
+                <div className="col-md-2">Всего: {this.props.totalCount}</div>
+            </div>
         );
     }
 }

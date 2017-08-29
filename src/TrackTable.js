@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import TrackListRow from "./TrackListRow";
+import TrackTableNoResults from "./NoResults";
 
 class TrackTable extends Component {
 
@@ -40,15 +41,18 @@ class TrackTable extends Component {
             return (<TrackListRow key={track.id} track={track}/>);
         });
 
+        if (!rows.length) {
+            rows = (<TrackTableNoResults/>);
+        }
         return (
 
             <table className="table table-bordered table-hover">
                 <thead>
                 <tr>
-                    <th><a href="javascript:void(0);" onClick={ this.orderByArtist }>Исполнитель</a></th>
-                    <th><a href="javascript:void(0);" onClick={ this.orderByName }>Песня</a></th>
-                    <th><a href="javascript:void(0);" onClick={ this.orderByGenre }>Жанр</a></th>
-                    <th><a href="javascript:void(0);" onClick={ this.orderByYear }>Год</a></th>
+                    <th><a href="javascript:void(0);" onClick={this.orderByArtist}>Исполнитель</a></th>
+                    <th><a href="javascript:void(0);" onClick={this.orderByName}>Песня</a></th>
+                    <th><a href="javascript:void(0);" onClick={this.orderByGenre}>Жанр</a></th>
+                    <th><a href="javascript:void(0);" onClick={this.orderByYear}>Год</a></th>
                 </tr>
                 </thead>
                 <tbody>{rows}</tbody>
