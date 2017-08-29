@@ -3,10 +3,9 @@ import './App.css';
 import Pagination from "./Pagination/Pagination";
 import TrackTableFilters from "./TrackTableFilters";
 import TrackTable from "./TrackTable";
+import TrackTableCountPerPage from "./TrackTableCountPerPage";
 
 class TracksPage extends Component {
-
-    itemCountPerPage = 10;
 
     sortMethod = {
         name: "alphabetically",
@@ -23,7 +22,8 @@ class TracksPage extends Component {
             artist: null,
             genre: null,
             year: null,
-            page: 1
+            page: 1,
+            itemCountPerPage: 10
         };
 
         this.onSelectArtist = this.onSelectArtist.bind(this);
@@ -31,6 +31,7 @@ class TracksPage extends Component {
         this.onSelectYear = this.onSelectYear.bind(this);
         this.onPageChange = this.onPageChange.bind(this);
         this.onChangeOrder = this.onChangeOrder.bind(this);
+        this.onChangeCountPerPage = this.onChangeCountPerPage.bind(this);
     }
 
     onSelectArtist(artist) {
@@ -68,6 +69,14 @@ class TracksPage extends Component {
         });
     }
 
+    onChangeCountPerPage(count)
+    {
+        this.setState({
+            page: 1,
+            itemCountPerPage: count
+        });
+    }
+
     render() {
 
         let tracks = this.props.tracks;
@@ -93,8 +102,8 @@ class TracksPage extends Component {
         }
 
         let paginatedTracks = tracks.slice(
-            this.itemCountPerPage * this.state.page - this.itemCountPerPage,
-            this.itemCountPerPage * this.state.page
+            this.state.itemCountPerPage * this.state.page - this.state.itemCountPerPage,
+            this.state.itemCountPerPage * this.state.page
         );
 
         return (
@@ -113,7 +122,8 @@ class TracksPage extends Component {
                             onSelectYear={this.onSelectYear}/>
                     </div>
                 </div>
-                <Pagination itemCountPerPage={this.itemCountPerPage} totalCount={tracks.length}
+                <TrackTableCountPerPage onChange={this.onChangeCountPerPage}/>
+                <Pagination itemCountPerPage={this.state.itemCountPerPage} totalCount={tracks.length}
                             currentPage={this.state.page} onPageChange={this.onPageChange}/>
             </div>
         );
