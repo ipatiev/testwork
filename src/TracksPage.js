@@ -108,11 +108,13 @@ class TracksPage extends Component {
             <div className="App">
                 <div className="row">
                     <div className="col-md-9">
-                        <h1>Плейлист</h1>
+                        <h2>Плейлист</h2>
+                        <br />
                         <TrackTable tracks={paginatedTracks} onChangeOrder={this.onChangeOrder}/>
                     </div>
                     <div className="col-md-3">
                         <h2>Фильтр</h2>
+                        <br />
                         <TrackTableFilters
                             artists={this.props.artists}
                             onSelectArtist={this.onSelectArtist}
@@ -126,6 +128,8 @@ class TracksPage extends Component {
                         <TrackTableCountPerPage onChange={this.onChangeCountPerPage} active={this.state.itemCountPerPage}/>
                     </div>
                 </div>
+
+                <br />
 
                 <Pagination itemCountPerPage={this.state.itemCountPerPage} totalCount={tracks.length}
                             currentPage={this.state.page} onPageChange={this.onPageChange}/>
