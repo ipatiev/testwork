@@ -16,16 +16,25 @@ class TrackTableSortableTh extends Component {
         if (this.props.currentOrderBy === this.props.name) {
             if (this.props.currentOrderDirection) {
                 return (
-                    <th><a href="javascript:void(0);" onClick={this.onClick}>{this.props.title} <img src="img/sort_asc.png" /></a></th>
+                    <th>
+                        <a href="javascript:void(0);" onClick={this.onClick}>{this.props.title}</a>
+                        <img src="img/sort_asc.png" alt=""/>
+                    </th>
                 );
             } else {
                 return (
-                    <th><a href="javascript:void(0);" onClick={this.onClick}>{this.props.title} <img src="img/sort_desc.png" /></a></th>
+                    <th>
+                        <a href="javascript:void(0);" onClick={this.onClick}>{this.props.title}</a>
+                        <img src="img/sort_desc.png" alt=""/>
+                    </th>
                 );
             }
         }
         return (
-            <th><a href="javascript:void(0);" onClick={this.onClick}>{this.props.title}</a> <img src="img/sort_both.png" /></th>
+            <th>
+                <a href="javascript:void(0);" onClick={this.onClick}>{this.props.title}</a>
+                <img src="img/sort_both.png" alt=""/>
+            </th>
         );
     }
 }
