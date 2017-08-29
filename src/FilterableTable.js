@@ -10,6 +10,15 @@ class FilterableTable extends Component {
 
     constructor(props) {
         super(props);
+
+        this.state = {
+            orderBy: '',
+            artist: null,
+            genre: null,
+            year: null,
+            page: 1
+        };
+
         this.onArtistChange = this.onArtistChange.bind(this);
         this.onGenreChange = this.onGenreChange.bind(this);
         this.onYearChange = this.onYearChange.bind(this);
@@ -34,6 +43,14 @@ class FilterableTable extends Component {
         this.setState({
             year: year
         });
+    }
+
+    onPageChange(page)
+    {
+        this.setState({
+            page: page
+        });
+        console.log(page);
     }
 
     render() {
@@ -66,7 +83,8 @@ class FilterableTable extends Component {
                     yearList={yearList}
                     onYearChange={this.onYearChange}/>
                 <TrackListTable tracks={tracks} />
-                <Pagination itemCountPerPage={this.itemCountPerPage} totalCount={tracks.length} />
+                <Pagination itemCountPerPage={this.itemCountPerPage} totalCount={tracks.length}
+                            currentPage={this.state.page} onPageChange={this.onPageChange} />
             </div>
         );
     }
