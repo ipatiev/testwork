@@ -7,8 +7,7 @@ class TrackTableSortableTh extends Component {
         this.onClick = this.onClick.bind(this);
     }
 
-    onClick()
-    {
+    onClick() {
         this.props.onClick(this.props.name);
     }
 
@@ -25,7 +24,6 @@ class TrackTableSortableTh extends Component {
                 );
             }
         }
-
         return (
             <th><a href="javascript:void(0);" onClick={this.onClick}>{this.props.title}</a></th>
         );

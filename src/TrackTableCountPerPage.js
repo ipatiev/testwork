@@ -15,6 +15,7 @@ class TrackTableCountPerPage extends Component {
     render() {
 
         return (
+
             <ul className="count-per-page">
                 <TrackTableCountPerPageLink count="10" onClick={this.onClick} active={this.props.active}/>
                 <TrackTableCountPerPageLink count="25" onClick={this.onClick} active={this.props.active}/>

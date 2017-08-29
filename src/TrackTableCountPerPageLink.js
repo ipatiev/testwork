@@ -13,14 +13,22 @@ class TrackTableCountPerPageLink extends Component {
 
     render() {
 
-        if (this.props.count === this.props.active) {
+        if (+this.props.count === this.props.active) {
             return (
-                <li><a className="btn btn-secondary" href="javascript:void(0)" onClick={this.onClick}><b>{this.props.count}</b></a></li>
+                <li>
+                    <a className="btn btn-secondary" href="javascript:void(0)" onClick={this.onClick}>
+                        {this.props.count}
+                    </a>
+                </li>
             );
         }
 
         return (
-            <li><a className="btn btn-secondary" href="javascript:void(0)" onClick={this.onClick}>{this.props.count}</a></li>
+            <li>
+                <a className="btn" href="javascript:void(0)" onClick={this.onClick}>
+                    {this.props.count}
+                </a>
+            </li>
         );
     }
 }

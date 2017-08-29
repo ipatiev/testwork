@@ -120,7 +120,7 @@ class TracksPage extends Component {
                             onSelectYear={this.onSelectYear}/>
                     </div>
                 </div>
-                <TrackTableCountPerPage onChange={this.onChangeCountPerPage}/>
+                <TrackTableCountPerPage onChange={this.onChangeCountPerPage} active={this.state.itemCountPerPage}/>
                 <Pagination itemCountPerPage={this.state.itemCountPerPage} totalCount={tracks.length}
                             currentPage={this.state.page} onPageChange={this.onPageChange}/>
             </div>
