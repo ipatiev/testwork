@@ -42,7 +42,7 @@ class TrackTable extends Component {
         }
         return (
 
-            <table className="table table-bordered table-hover">
+            <table className="table table-bordered table-striped">
                 <thead>
                 <tr>
                     <TrackTableSortableTh name="artist" title="Исполнитель" onClick={this.orderBy} currentOrderBy={this.state.orderBy} currentOrderDirection={this.state.orderDirection}/>

@@ -108,7 +108,7 @@ class TracksPage extends Component {
             <div className="App">
                 <div className="row">
                     <div className="col-md-9">
-                        <h2>Плейлист</h2>
+                        <h1>Плейлист</h1>
                         <TrackTable tracks={paginatedTracks} onChangeOrder={this.onChangeOrder}/>
                     </div>
                     <div className="col-md-3">

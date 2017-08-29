@@ -14,9 +14,9 @@ class PageLink extends Component {
     render() {
         if (this.props.isActive) {
             return (
-                <li className="page-item">
+                <li className="page-item active">
                     <a className="page-link" href="javascript:void(0)" onClick={this.onClick}>
-                        <b>{this.props.page}</b>
+                        {this.props.page}
                     </a>
                 </li>
             )

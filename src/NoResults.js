@@ -5,7 +5,11 @@ class TrackTableNoResults extends Component {
     render() {
         return (
             <tr>
-                <td colSpan="4">Нет результатов</td>
+                <td colSpan="4">
+                    <div className="alert alert-warning">
+                        Нет результатов
+                    </div>
+                </td>
             </tr>
         );
     }
