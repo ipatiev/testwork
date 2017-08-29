@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import TrackListRow from "./TrackListRow";
 import TrackTableNoResults from "./NoResults";
+import TrackTableRow from "./TrackListRow";
 
 class TrackTable extends Component {
 
@@ -38,7 +38,7 @@ class TrackTable extends Component {
     render() {
 
         let rows = this.props.tracks.map((track) => {
-            return (<TrackListRow key={track.id} track={track}/>);
+            return (<TrackTableRow key={track.id} track={track}/>);
         });
 
         if (!rows.length) {
