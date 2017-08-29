@@ -8,7 +8,7 @@ class PagePrevLink extends Component {
     }
 
     onClick() {
-        this.props.onClick(this.props.page - 1);
+        this.props.onPageChange(this.props.page - 1);
     }
 
     render() {
