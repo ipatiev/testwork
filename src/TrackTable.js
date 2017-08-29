@@ -1,38 +1,34 @@
 import React, {Component} from 'react';
 import TrackTableNoResults from "./NoResults";
 import TrackTableRow from "./TrackListRow";
+import TrackTableSortableTh from "./TrackTableSortableTh";
 
 class TrackTable extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            orderBy: '',
-            artist: null,
-            genre: null,
-            year: null
+            orderBy: null,
+            orderDirection: false
         };
-
-        this.orderByArtist = this.orderByArtist.bind(this);
-        this.orderByName = this.orderByName.bind(this);
-        this.orderByGenre = this.orderByGenre.bind(this);
-        this.orderByYear = this.orderByYear.bind(this);
+        this.orderBy = this.orderBy.bind(this);
     }
 
-    orderByArtist() {
-        this.setState((prev) => ({orderBy: 'artist', orderByA: prev}))
-    }
+    orderBy(name) {
+        this.setState((prevState) => {
 
-    orderByName() {
-        this.props.onChangeOrder('name');
-    }
+            let orderDirection = (prevState.orderBy === name)
+                ? !prevState.orderDirection
+                : false;
 
-    orderByGenre() {
-        this.setState({orderBy: 'genre'})
-    }
+            this.props.onChangeOrder(name, orderDirection);
 
-    orderByYear() {
-        this.setState({orderBy: 'year'})
+            return {
+                orderBy: name,
+                orderDirection: orderDirection
+            };
+        });
+
     }
 
     render() {
@@ -49,10 +45,10 @@ class TrackTable extends Component {
             <table className="table table-bordered table-hover">
                 <thead>
                 <tr>
-                    <th><a href="javascript:void(0);" onClick={this.orderByArtist}>Исполнитель</a></th>
-                    <th><a href="javascript:void(0);" onClick={this.orderByName}>Песня</a></th>
-                    <th><a href="javascript:void(0);" onClick={this.orderByGenre}>Жанр</a></th>
-                    <th><a href="javascript:void(0);" onClick={this.orderByYear}>Год</a></th>
+                    <TrackTableSortableTh name="artist" title="Исполнитель" onClick={this.orderBy} currentOrderBy={this.state.orderBy} currentOrderDirection={this.state.orderDirection}/>
+                    <TrackTableSortableTh name="name" title="Песня" onClick={this.orderBy} currentOrderBy={this.state.orderBy} currentOrderDirection={this.state.orderDirection}/>
+                    <TrackTableSortableTh name="genre" title="Жанр" onClick={this.orderBy} currentOrderBy={this.state.orderBy} currentOrderDirection={this.state.orderDirection}/>
+                    <TrackTableSortableTh name="year" title="Год" onClick={this.orderBy} currentOrderBy={this.state.orderBy} currentOrderDirection={this.state.orderDirection}/>
                 </tr>
                 </thead>
                 <tbody>{rows}</tbody>

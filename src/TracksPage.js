@@ -8,6 +8,13 @@ class TracksPage extends Component {
 
     itemCountPerPage = 10;
 
+    sortMethod = {
+        name: "alphabetically",
+        artist: "alphabetically",
+        genre: "alphabetically",
+        year: "numeric"
+    };
+
     constructor(props) {
         super(props);
 
@@ -23,6 +30,7 @@ class TracksPage extends Component {
         this.onSelectGenre = this.onSelectGenre.bind(this);
         this.onSelectYear = this.onSelectYear.bind(this);
         this.onPageChange = this.onPageChange.bind(this);
+        this.onChangeOrder = this.onChangeOrder.bind(this);
     }
 
     onSelectArtist(artist) {
@@ -52,6 +60,14 @@ class TracksPage extends Component {
         });
     }
 
+    onChangeOrder(name, direction)
+    {
+        this.setState({
+            orderBy: name,
+            orderDirection: direction
+        });
+    }
+
     render() {
 
         let tracks = this.props.tracks;
@@ -69,16 +85,11 @@ class TracksPage extends Component {
         }
 
         if (this.state.orderBy) {
-            if (this.state.orderBy === 'year') {
-                tracks = tracks.sort((a, b) => (a.year - b.year))
-            } else {
-                let key = this.state.orderBy;
-                tracks = tracks.sort((a, b) => {
-                    if (a[key] < b[key]) return -1;
-                    if (a[key] > b[key]) return 1;
-                    return 0;
-                })
-            }
+            tracks = this.sortArrayBy(
+                tracks,
+                this.state.orderBy,
+                this.state.orderDirection,
+                (this.sortMethod[this.state.orderBy] === 'numeric'));
         }
 
         let paginatedTracks = tracks.slice(
@@ -90,7 +101,7 @@ class TracksPage extends Component {
             <div className="App">
                 <div className="row">
                     <div className="col-md-10">
-                        <TrackTable tracks={paginatedTracks}/>
+                        <TrackTable tracks={paginatedTracks} onChangeOrder={this.onChangeOrder}/>
                     </div>
                     <div className="col-md-2">
                         <TrackTableFilters
@@ -106,6 +117,27 @@ class TracksPage extends Component {
                             currentPage={this.state.page} onPageChange={this.onPageChange}/>
             </div>
         );
+    }
+
+    /**
+     * Sort array by key
+     * @param {Array} array
+     * @param {String} key
+     * @param {Boolean} isReverse
+     * @param {Boolean} isNumeric (or alphabetically)
+     * @returns {Array}
+     */
+    sortArrayBy(array, key, isReverse, isNumeric) {
+        if (isNumeric) {
+            array = array.sort((a, b) => (a.year - b.year))
+        } else {
+            array = array.sort((a, b) => {
+                if (a[key] < b[key]) return -1;
+                if (a[key] > b[key]) return 1;
+                return 0;
+            })
+        }
+        return (isReverse) ? array.reverse() : array;
     }
 }
 
