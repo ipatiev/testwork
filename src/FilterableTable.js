@@ -22,6 +22,7 @@ class FilterableTable extends Component {
         this.onArtistChange = this.onArtistChange.bind(this);
         this.onGenreChange = this.onGenreChange.bind(this);
         this.onYearChange = this.onYearChange.bind(this);
+        this.onPageChange = this.onPageChange.bind(this);
     }
 
     onArtistChange(artist)
@@ -50,7 +51,6 @@ class FilterableTable extends Component {
         this.setState({
             page: page
         });
-        console.log(page);
     }
 
     render() {

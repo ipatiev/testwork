@@ -12,9 +12,15 @@ class PaginationPage extends Component {
     }
 
     render() {
-        return (
-            <li><a href="javascript:void(0)" onClick={this.handlePageChange}>{this.props.page}</a></li>
-        )
+        if (this.props.isActive) {
+            return (
+                <li><a href="javascript:void(0)" onClick={this.handlePageChange}><b>{this.props.page}</b></a></li>
+            )
+        } else {
+            return (
+                <li><a href="javascript:void(0)" onClick={this.handlePageChange}>{this.props.page}</a></li>
+            )
+        }
     }
 }
 

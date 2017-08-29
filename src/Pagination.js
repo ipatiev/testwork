@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import PaginationPage from "./PaginationPage";
+import PaginationPagePrev from "./PaginationPagePrev";
+import PaginationPageNext from "./PaginationPageNext";
 
 class Pagination extends Component {
 
@@ -11,7 +13,17 @@ class Pagination extends Component {
 
     handlePageChange(e)
     {
-        this.props.onPageChange = e;
+        this.props.onPageChange(e);
+    }
+
+    handleNext(e)
+    {
+        this.props.onPageChange(1);
+    }
+
+    handlePrev(e)
+    {
+        this.props.onPageChange(e);
     }
 
     render() {
@@ -24,18 +36,19 @@ class Pagination extends Component {
             maxPage = 0;
 
         for (let i = 0; i < totalCount; i += itemCountPerPage) {
-            pages.push(page++);
+            pages.push(page);
             maxPage = page;
+            page++;
         }
 
         let liArray = pages.map((page) =>
-            (<PaginationPage key={page} page={page} onPageChange={this.handlePageChange} currentPage={currentPage}/>));
+            (<PaginationPage key={page} page={page} onPageChange={this.handlePageChange} isActive={currentPage === page}/>));
 
         return (
             <ul>
-                {currentPage > 1 && <li><a href="javascript:void(0)">Prev</a></li>}
+                <PaginationPagePrev page={currentPage} onClick={this.handlePageChange} />
                 {liArray}
-                {currentPage < maxPage && <li><a href="javascript:void(0)">Next</a></li>}
+                <PaginationPageNext page={currentPage} maxPage={maxPage} onClick={this.handlePageChange}/>
             </ul>
         );
     }
