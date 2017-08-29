@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import TrackTable from "./TrackTable";
 import TrackStorage from "./TrackStorage";
 import './App.css';
+import TracksPage from "./TracksPage";
 
 class App extends Component {
 
@@ -11,7 +11,7 @@ class App extends Component {
 
         return (
             <div className="App">
-                <TrackTable
+                <TracksPage
                     tracks={trackStorage.getTracks()}
                     artists={trackStorage.getArtists()}
                     genres={trackStorage.getGenres()}

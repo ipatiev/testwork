@@ -1,87 +1,73 @@
 import React, {Component} from 'react';
-import './App.css';
-import TrackListTable from "./TrackListTable";
-import Pagination from "./Pagination/Pagination";
-import TrackTableFilters from "./TrackTableFilters";
+import TrackListRow from "./TrackListRow";
 
 class TrackTable extends Component {
 
-    itemCountPerPage = 5;
-
     constructor(props) {
         super(props);
-
         this.state = {
             orderBy: '',
             artist: null,
             genre: null,
-            year: null,
-            page: 1
+            year: null
         };
 
-        this.onSelectArtist = this.onSelectArtist.bind(this);
-        this.onSelectGenre = this.onSelectGenre.bind(this);
-        this.onSelectYear = this.onSelectYear.bind(this);
-        this.onPageChange = this.onPageChange.bind(this);
+        this.orderByArtist = this.orderByArtist.bind(this);
+        this.orderByName = this.orderByName.bind(this);
+        this.orderByGenre = this.orderByGenre.bind(this);
+        this.orderByYear = this.orderByYear.bind(this);
     }
 
-    onSelectArtist(artist)
-    {
-        this.setState({
-            artist: artist
-        });
+    orderByArtist() {
+        this.setState((prev) => ({orderBy: 'artist', orderByA: prev}))
     }
 
-    onSelectGenre(genre)
-    {
-        this.setState({
-            genre: genre
-        });
+    orderByName() {
+        this.setState({orderBy: 'name'})
     }
 
-    onSelectYear(year)
-    {
-        this.setState({
-            year: year
-        });
+    orderByGenre() {
+        this.setState({orderBy: 'genre'})
     }
 
-    onPageChange(page)
-    {
-        this.setState({
-            page: page
-        });
+    orderByYear() {
+        this.setState({orderBy: 'year'})
     }
 
     render() {
 
         let tracks = this.props.tracks;
 
-        // if (this.state) {
-        //     if (this.state.artist) {
-        //         tracks = this.props.tracks.filter((item) => item.artist === this.state.artist);
-        //     }
-        //     if (this.state.genre) {
-        //         tracks = this.props.tracks.filter((item) => item.genre === this.state.genre);
-        //     }
-        //     if (this.state.year) {
-        //         tracks = this.props.tracks.filter((item) => item.year === this.state.year);
-        //     }
-        // }
+        if (this.state.orderBy) {
+            if (this.state.orderBy === 'year') {
+                tracks = tracks.sort((a, b) => (a.year - b.year))
+            } else {
+                let key = this.state.orderBy;
+                tracks = tracks.sort((a, b) => {
+                    if (a[key] < b[key]) return -1;
+                    if (a[key] > b[key]) return 1;
+                    return 0;
+                })
+            }
+        }
+
+        let rows = tracks.map((track) => {
+            return (<TrackListRow key={track.id} track={track}/>);
+        });
 
         return (
-            <div className="App">
-                <TrackTableFilters
-                    artists={this.props.artists}
-                    onSelectArtist={this.onSelectArtist}
-                    genres={this.props.genres}
-                    onSelectGenre={this.onSelectGenre}
-                    years={this.props.years}
-                    onSelectYear={this.onSelectYear}/>
-                <TrackListTable tracks={tracks} />
-                <Pagination itemCountPerPage={this.itemCountPerPage} totalCount={tracks.length}
-                            currentPage={this.state.page} onPageChange={this.onPageChange} />
-            </div>
+
+            <table className="table table-bordered table-hover">
+                <thead>
+                <tr>
+                    <th><a href="javascript:void(0);" onClick={ this.orderByArtist }>Исполнитель</a></th>
+                    <th><a href="javascript:void(0);" onClick={ this.orderByName }>Песня</a></th>
+                    <th><a href="javascript:void(0);" onClick={ this.orderByGenre }>Жанр</a></th>
+                    <th><a href="javascript:void(0);" onClick={ this.orderByYear }>Год</a></th>
+                </tr>
+                </thead>
+                <tbody>{rows}</tbody>
+            </table>
         );
     }
 }

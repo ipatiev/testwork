@@ -29,18 +29,27 @@ class TrackTableFilters extends Component {
 
         return (
             <form>
-                <select onChange={this.onChangeArtist}>
-                    <option value="">Все</option>
-                    {this.props.artists.map(createOption)}
-                </select>
-                <select onChange={this.onChangeGenre}>
-                    <option value="">Все</option>
-                    {this.props.genres.map(createOption)}
-                </select>
-                <select onChange={this.onChangeYear}>
-                    <option value="">Все</option>
-                    {this.props.years.map(createOption)}
-                </select>
+                <div className="form-group">
+                    <label>Артист:</label>
+                    <select onChange={this.onChangeArtist} className="form-control">
+                        <option value="">Все</option>
+                        {this.props.artists.map(createOption)}
+                    </select>
+                </div>
+                <div className="form-group">
+                    <label>Жанр:</label>
+                    <select onChange={this.onChangeGenre} className="form-control">
+                        <option value="">Все</option>
+                        {this.props.genres.map(createOption)}
+                    </select>
+                </div>
+                <div className="form-group">
+                    <label>Год:</label>
+                    <select onChange={this.onChangeYear} className="form-control">
+                        <option value="">Все</option>
+                        {this.props.years.map(createOption)}
+                    </select>
+                </div>
             </form>
         );
     }
