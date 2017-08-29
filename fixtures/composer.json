@@ -1,0 +1,12 @@
+{
+    "name": "ipatiev/fixtures",
+    "authors": [
+        {
+            "name": "Mikhail Ipatiev",
+            "email": "mikhail.ipatiev@gmail.com"
+        }
+    ],
+    "require": {
+        "fzaninotto/faker": "^1.7"
+    }
+}
