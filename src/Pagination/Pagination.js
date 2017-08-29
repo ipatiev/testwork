@@ -38,16 +38,11 @@ class Pagination extends Component {
             return null;
         }
         return (
-            <div className="row">
-                <div className="col-md-10">
-                    <ul className="pagination">
-                        <PagePrevLink page={currentPage} onPageChange={this.handlePageChange}/>
-                        {pageLinks}
-                        <PageNextLink page={currentPage} maxPage={maxPage} onPageChange={this.handlePageChange}/>
-                    </ul>
-                </div>
-                <div className="col-md-2">Всего: {this.props.totalCount}</div>
-            </div>
+            <ul className="pagination">
+                <PagePrevLink page={currentPage} onPageChange={this.handlePageChange}/>
+                {pageLinks}
+                <PageNextLink page={currentPage} maxPage={maxPage} onPageChange={this.handlePageChange}/>
+            </ul>
         );
     }
 }

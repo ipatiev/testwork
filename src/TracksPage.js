@@ -25,32 +25,28 @@ class TracksPage extends Component {
         this.onPageChange = this.onPageChange.bind(this);
     }
 
-    onSelectArtist(artist)
-    {
+    onSelectArtist(artist) {
         this.setState({
             artist: artist,
             page: 1
         });
     }
 
-    onSelectGenre(genre)
-    {
+    onSelectGenre(genre) {
         this.setState({
             genre: genre,
             page: 1
         });
     }
 
-    onSelectYear(year)
-    {
+    onSelectYear(year) {
         this.setState({
             year: year,
             page: 1
         });
     }
 
-    onPageChange(page)
-    {
+    onPageChange(page) {
         this.setState({
             page: page
         });
@@ -93,28 +89,21 @@ class TracksPage extends Component {
         return (
             <div className="App">
                 <div className="row">
-                    <div className="col-md-7">
-
-                        <div className="row">
-                            <div className="col-md-10">
-                                <TrackTable tracks={paginatedTracks} />
-                            </div>
-                            <div className="col-md-2">
-                                <TrackTableFilters
-                                    artists={this.props.artists}
-                                    onSelectArtist={this.onSelectArtist}
-                                    genres={this.props.genres}
-                                    onSelectGenre={this.onSelectGenre}
-                                    years={this.props.years}
-                                    onSelectYear={this.onSelectYear}/>
-                            </div>
-                        </div>
-                        <Pagination itemCountPerPage={this.itemCountPerPage} totalCount={tracks.length}
-                                    currentPage={this.state.page} onPageChange={this.onPageChange} />
-
+                    <div className="col-md-10">
+                        <TrackTable tracks={paginatedTracks}/>
+                    </div>
+                    <div className="col-md-2">
+                        <TrackTableFilters
+                            artists={this.props.artists}
+                            onSelectArtist={this.onSelectArtist}
+                            genres={this.props.genres}
+                            onSelectGenre={this.onSelectGenre}
+                            years={this.props.years}
+                            onSelectYear={this.onSelectYear}/>
                     </div>
                 </div>
-
+                <Pagination itemCountPerPage={this.itemCountPerPage} totalCount={tracks.length}
+                            currentPage={this.state.page} onPageChange={this.onPageChange}/>
             </div>
         );
     }
