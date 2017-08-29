@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component}         from 'react';
 import TrackTableCountPerPageLink from "./TrackTableCountPerPageLink";
 
 class TrackTableCountPerPage extends Component {
@@ -14,15 +14,12 @@ class TrackTableCountPerPage extends Component {
 
     render() {
 
-        return (
-
-            <div className="btn-group">
-                <TrackTableCountPerPageLink count="10" onClick={this.onClick} active={this.props.active}/>
-                <TrackTableCountPerPageLink count="25" onClick={this.onClick} active={this.props.active}/>
-                <TrackTableCountPerPageLink count="50" onClick={this.onClick} active={this.props.active}/>
-                <TrackTableCountPerPageLink count="100" onClick={this.onClick} active={this.props.active}/>
-            </div>
-        );
+        return <div className="btn-group">
+            <TrackTableCountPerPageLink count="10" onClick={this.onClick} active={this.props.active}/>
+            <TrackTableCountPerPageLink count="25" onClick={this.onClick} active={this.props.active}/>
+            <TrackTableCountPerPageLink count="50" onClick={this.onClick} active={this.props.active}/>
+            <TrackTableCountPerPageLink count="100" onClick={this.onClick} active={this.props.active}/>
+        </div>
     }
 }
 

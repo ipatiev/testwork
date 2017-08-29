@@ -13,21 +13,18 @@ class PageLink extends Component {
 
     render() {
         if (this.props.isActive) {
-            return (
-                <li className="page-item active">
-                    <a className="page-link" href="javascript:void(0)" onClick={this.onClick}>
-                        {this.props.page}
-                    </a>
-                </li>
-            )
+            return <li className="page-item active">
+                <a className="page-link" href="javascript:void(0)" onClick={this.onClick}>
+                    {this.props.page}
+                </a>
+            </li>
+
         } else {
-            return (
-                <li className="page-item">
-                    <a className="page-link" href="javascript:void(0)" onClick={this.onClick}>
-                        {this.props.page}
-                    </a>
-                </li>
-            )
+            return <li className="page-item">
+                <a className="page-link" href="javascript:void(0)" onClick={this.onClick}>
+                    {this.props.page}
+                </a>
+            </li>
         }
     }
 }

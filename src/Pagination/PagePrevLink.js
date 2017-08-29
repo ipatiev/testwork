@@ -15,13 +15,11 @@ class PagePrevLink extends Component {
         if (this.props.page <= 1) {
             return null;
         }
-        return (
-            <li className="page-item">
-                <a className="page-link" href="javascript:void(0)" onClick={this.onClick}>
-                    &laquo;
-                </a>
-            </li>
-        )
+        return <li className="page-item">
+            <a className="page-link" href="javascript:void(0)" onClick={this.onClick}>
+                &laquo;
+            </a>
+        </li>
     }
 }
 

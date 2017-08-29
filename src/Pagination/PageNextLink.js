@@ -8,20 +8,18 @@ class PageNextLink extends Component {
     }
 
     onClick() {
-        this.props.onPageChange(this.props.page+1);
+        this.props.onPageChange(this.props.page + 1);
     }
 
     render() {
         if (this.props.page >= this.props.maxPage) {
             return null;
         }
-        return (
-            <li className="page-item">
-                <a className="page-link" href="javascript:void(0)" onClick={this.onClick}>
-                    &raquo;
-                </a>
-            </li>
-        )
+        return <li className="page-item">
+            <a className="page-link" href="javascript:void(0)" onClick={this.onClick}>
+                &raquo;
+            </a>
+        </li>
     }
 }
 

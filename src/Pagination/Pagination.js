@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import PageLink from "./PageLink";
-import PagePrevLink from "./PagePrevLink";
-import PageNextLink from "./PageNextLink";
+import PageLink           from "./PageLink";
+import PagePrevLink       from "./PagePrevLink";
+import PageNextLink       from "./PageNextLink";
 
 class Pagination extends Component {
 
@@ -28,22 +28,20 @@ class Pagination extends Component {
         }
 
         let pageLinks = pages.map((page) =>
-            (<PageLink
+            <PageLink
                 key={page}
                 page={page}
                 isActive={currentPage === page}
-                onPageChange={this.handlePageChange}/>));
+                onPageChange={this.handlePageChange}/>)
 
         if (pages.length <= 1) {
             return null;
         }
-        return (
-            <ul className="pagination">
-                <PagePrevLink page={currentPage} onPageChange={this.handlePageChange}/>
-                {pageLinks}
-                <PageNextLink page={currentPage} maxPage={maxPage} onPageChange={this.handlePageChange}/>
-            </ul>
-        );
+        return <ul className="pagination">
+            <PagePrevLink page={currentPage} onPageChange={this.handlePageChange}/>
+            {pageLinks}
+            <PageNextLink page={currentPage} maxPage={maxPage} onPageChange={this.handlePageChange}/>
+        </ul>
     }
 }
 
