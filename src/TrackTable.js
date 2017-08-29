@@ -24,7 +24,7 @@ class TrackTable extends Component {
     }
 
     orderByName() {
-        this.setState({orderBy: 'name'})
+        this.props.onChangeOrder('name');
     }
 
     orderByGenre() {
@@ -38,11 +38,11 @@ class TrackTable extends Component {
     render() {
 
         let rows = this.props.tracks.map((track) => {
-            return (<TrackTableRow key={track.id} track={track}/>);
+            return <TrackTableRow key={track.id} track={track}/>
         });
 
         if (!rows.length) {
-            rows = (<TrackTableNoResults/>);
+            rows = <TrackTableNoResults/>
         }
         return (
 
