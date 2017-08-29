@@ -16,12 +16,12 @@ class TrackTableCountPerPage extends Component {
 
         return (
 
-            <ul className="count-per-page">
+            <div className="btn-group">
                 <TrackTableCountPerPageLink count="10" onClick={this.onClick} active={this.props.active}/>
                 <TrackTableCountPerPageLink count="25" onClick={this.onClick} active={this.props.active}/>
                 <TrackTableCountPerPageLink count="50" onClick={this.onClick} active={this.props.active}/>
                 <TrackTableCountPerPageLink count="100" onClick={this.onClick} active={this.props.active}/>
-            </ul>
+            </div>
         );
     }
 }
