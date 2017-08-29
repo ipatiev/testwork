@@ -6,7 +6,7 @@ import TrackTable from "./TrackTable";
 
 class TracksPage extends Component {
 
-    itemCountPerPage = 20;
+    itemCountPerPage = 10;
 
     constructor(props) {
         super(props);
@@ -77,21 +77,28 @@ class TracksPage extends Component {
         return (
             <div className="App">
                 <div className="row">
-                    <div className="col-md-10">
-                        <TrackTable tracks={paginatedTracks} />
-                    </div>
-                    <div className="col-md-2">
-                        <TrackTableFilters
-                            artists={this.props.artists}
-                            onSelectArtist={this.onSelectArtist}
-                            genres={this.props.genres}
-                            onSelectGenre={this.onSelectGenre}
-                            years={this.props.years}
-                            onSelectYear={this.onSelectYear}/>
+                    <div className="col-md-7">
+
+                        <div className="row">
+                            <div className="col-md-10">
+                                <TrackTable tracks={paginatedTracks} />
+                            </div>
+                            <div className="col-md-2">
+                                <TrackTableFilters
+                                    artists={this.props.artists}
+                                    onSelectArtist={this.onSelectArtist}
+                                    genres={this.props.genres}
+                                    onSelectGenre={this.onSelectGenre}
+                                    years={this.props.years}
+                                    onSelectYear={this.onSelectYear}/>
+                            </div>
+                        </div>
+                        <Pagination itemCountPerPage={this.itemCountPerPage} totalCount={tracks.length}
+                                    currentPage={this.state.page} onPageChange={this.onPageChange} />
+
                     </div>
                 </div>
-                <Pagination itemCountPerPage={this.itemCountPerPage} totalCount={tracks.length}
-                            currentPage={this.state.page} onPageChange={this.onPageChange} />
+
             </div>
         );
     }
