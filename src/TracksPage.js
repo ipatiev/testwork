@@ -61,16 +61,14 @@ class TracksPage extends Component {
         });
     }
 
-    onChangeOrder(name, direction)
-    {
+    onChangeOrder(name, direction) {
         this.setState({
             orderBy: name,
             orderDirection: direction
         });
     }
 
-    onChangeCountPerPage(count)
-    {
+    onChangeCountPerPage(count) {
         this.setState({
             page: 1,
             itemCountPerPage: +count
