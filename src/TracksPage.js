@@ -73,7 +73,7 @@ class TracksPage extends Component {
     {
         this.setState({
             page: 1,
-            itemCountPerPage: count
+            itemCountPerPage: +count
         });
     }
 
